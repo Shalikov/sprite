@@ -1,0 +1,257 @@
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Montserrat', sans-serif;
+            background-color: #f4f4f4;
+            overflow-x: hidden; 
+        }
+
+        
+        .header {
+            width: 100%;
+            height: 400px;
+            background-color: #A1D99B;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .can-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            opacity: 0.6;
+            background-image: url('sprite.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            transition: opacity 0.6s ease-out;
+        }
+
+        .can-overlay.hidden {
+            opacity: 0;
+        }
+
+        h1.logo-text {
+            font-size: 8rem;
+            font-weight: 700;
+            color: #ffffff;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            z-index: 2;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+            margin: 0;
+            text-align: center;
+            line-height: 1; 
+        }
+
+        .menu {
+            margin-top: 20px;
+            display: flex;
+            gap: 30px;
+            z-index: 3;
+            flex-wrap: wrap; 
+            justify-content: center;
+        }
+
+        .menu a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: 500;
+            transition: color 0.3s ease, text-shadow 0.3s ease;
+        }
+
+        .menu a:hover {
+            color: #f1c40f;
+            text-shadow: 0 0 10px rgba(241, 196, 15, 0.8);
+        }
+
+
+        .scene {
+            position: relative;
+            min-height: 500px;
+            overflow: hidden;
+            background-color: #00441B;
+        }
+
+    
+        .can-animate {
+            width: 160px;
+            height: 240px;
+            background-image: url('sprite.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            position: absolute;
+            top: -240px;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0;
+            z-index: 5;
+            transition: top 1.2s ease-out,
+                        left 1.2s ease-out,
+                        transform 1.2s ease-out,
+                        opacity 0.3s ease-out;
+        }
+
+        .can-animate.moved {
+            top: 60px;
+            left: 15%; 
+            transform: translateX(0) scale(1);
+            opacity: 1;
+        }
+
+        .drink-info {
+            position: absolute;
+            top: 120px;
+            right: 10%; 
+            color: #fff; 
+            font-size: 18px;
+            line-height: 1.6;
+            opacity: 0;
+            z-index: 6;
+            max-width: 320px; 
+            text-align: right;
+            transition: opacity 0.6s ease-out;
+        }
+
+        .drink-info.visible {
+            opacity: 1;
+        }
+
+    
+        .buy-section {
+            display: flex;
+            justify-content: center;
+            padding: 60px 20px;
+            background: #f4f4f4;
+        }
+
+        .buy-card {
+            background:#A1D99B ;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12);
+            width: 100%;
+            max-width: 420px;
+            padding: 40px;
+            text-align: center;
+            position: relative;
+        }
+
+        .buy-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #238B45;
+            margin-bottom: 10px;
+        }
+
+        .buy-desc {
+            color: #777;
+            font-size: 1rem;
+            margin-bottom: 20px;
+        }
+
+        .buy-price {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .buy-price span {
+            font-size: 1.2rem;
+            color: #999;
+            font-weight: 400;
+        }
+
+        .buy-btn {
+            background: #238B45;
+            color: white;
+            border: none;
+            padding: 14px 40px;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            font-family: 'Montserrat', sans-serif;
+            transition: background 0.3s ease, transform 0.2s ease;
+        }
+
+        .buy-btn:hover {
+            background: #1a6e36;
+            transform: translateY(-2px);
+        }
+
+        
+        .buy-can {
+            width: 140px;
+            height: 210px;
+            background-image: url('sprite.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            margin: 0 auto 25px;
+            opacity: 0;
+            transform: rotate(0deg);
+            transition: transform 1.2s ease-in-out,
+                        opacity 0.4s ease-out;
+        }
+
+        .buy-can.active {
+            opacity: 1;
+            transform: rotate(360deg);
+        }
+
+        
+        .content-block {
+            padding: 60px 40px;
+            text-align: center;
+            color: #555;
+            font-size: 1.1rem;
+        }
+
+        .section-title {
+            font-size: 36px;
+            letter-spacing: 3px;
+            text-align: center;
+            margin-bottom: 40px;
+            color: white;
+        }
+
+        .footer {
+            background-color: #A1D99B;
+            padding: 40px 20px;
+            text-align: center;
+            color: white;
+        }
+         html {
+    scroll-behavior: smooth;
+  }
+        @media (max-width: 768px) {
+            h1.logo-text { font-size: 4rem; }
+            .menu { flex-direction: column; gap: 15px; }
+            
+            .can-animate { width: 120px; height: 180px; }
+            .can-animate.moved { top: 40px; left: 10%; transform: translateX(0); }
+
+            .drink-info { 
+                top: 80px; 
+                right: 5%; 
+                font-size: 16px; 
+                text-align: left;
+                max-width: 280px;
+            }
+
+            .buy-card { padding: 30px 20px; }
+            .buy-title { font-size: 1.4rem; }
+            .buy-price { font-size: 2rem; }
+        }
+   

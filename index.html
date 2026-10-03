@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SPRITE</title>
+     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+   
+</head>
+<body>
+
+    <div class="header" id="hd">
+        <div class="can-overlay" id="canOverlay"></div>
+        <h1 class="logo-text"><span style="color: #238B45;">SP</span><span style="color: yellow;">RI</span><span style="color: #238B45;">TE</span></h1>
+        <div class="menu">
+            <a href="#hd">HOME</a>
+            <a href="#ab">ABOUT</a>
+            <a href="#buySection">BUY</a>
+            <a href="#ft">CONTACTS</a>
+        </div>
+    </div>
+
+    <div class="scene" id="ab">
+        <div class="can-animate" id="canAnimate"></div>
+        <div class="drink-info" id="drinkInfo">
+            <strong>SPARKLING LEMOM-LIME</strong><br>
+            CRISP, refreshing and full of flavor.<br>
+            PERFECT FOR HOT SUMMER DAYS.
+        </div>
+    </div>
+
+    <!-- Блок покупки -->
+    <div class="buy-section" id="buySection">
+        <div class="buy-card">
+            <div class="buy-can" id="buyCan"></div>
+            <div class="buy-title">SPRITE LEMON-LIME</div>
+            <div class="buy-desc">330ML — BEST SERVED COLD</div>
+            <div class="buy-price">$2.49 <span>/ CAN</span></div>
+            <button class="buy-btn">BUY NOW</button>
+        </div>
+    </div>
+
+   
+    <footer class="footer" id="ft">
+        <div class="section-title">CONTACT US</div>
+        <p>EMAIL: info@sprite.com | PHONE: +1 234 567 890</p>
+    </footer>
+
+    <script>
+        const canOverlay = document.getElementById('canOverlay');
+        const canAnimate = document.getElementById('canAnimate');
+        const drinkInfo  = document.getElementById('drinkInfo');
+        const buyCan     = document.getElementById('buyCan');
+        const buySection = document.getElementById('buySection');
+
+        const SCROLL_THRESHOLD = 50;
+        let textTimer = null;
+
+        function isBuySectionVisible() {
+            const rect = buySection.getBoundingClientRect();
+            const windowHeight = window.innerHeight;
+            return rect.top < windowHeight * 0.7 && rect.bottom > 0;
+        }
+
+        window.addEventListener('scroll', function() {
+            const scrolledDown = window.scrollY > SCROLL_THRESHOLD;
+            const buyVisible = isBuySectionVisible();
+
+            if (scrolledDown) {
+                canOverlay.classList.add('hidden');
+                canAnimate.classList.add('moved');
+                clearTimeout(textTimer);
+                textTimer = setTimeout(function() {
+                    drinkInfo.classList.add('visible');
+                }, 1000);
+            } else {
+                canOverlay.classList.remove('hidden');
+                canAnimate.classList.remove('moved');
+                clearTimeout(textTimer);
+                drinkInfo.classList.remove('visible');
+            }
+
+            if (buyVisible) {
+                buyCan.classList.add('active');
+            } else {
+                buyCan.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>
